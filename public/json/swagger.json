@@ -1,0 +1,105 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "description" : "Esta e uma API de noticias.",
+    "version" : "1.0.0",
+    "title" : "Api Noticias ",
+    "contact" : {
+      "email" : "rafaeldecruzeiro@gmail.com"
+    },
+    "license" : {
+      "name" : "Apache 2.0",
+      "url" : "http://www.apache.org/licenses/LICENSE-2.0.html"
+    }
+  },
+  "host" : "5.189.187.150",
+  "basePath" : "/noticias/public/api",
+  "tags" : [ {
+    "name" : "news",
+    "description" : "Operações sobre noticias",
+    "externalDocs" : {
+      "description" : "Veja o projeto no github",
+      "url" : "https://github.com/cyberby/noticias"
+    }
+  } ],
+  "schemes" : [ "http" ],
+  "paths" : {
+    "/news" : {
+      "get" : {
+        "tags" : [ "news" ],
+        "summary" : "Pesquisar noticias",
+        "description" : "Retorna as noticias paginadas",
+        "produces" : [ "application/json" ],
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "Operacacao com sucesso"
+          }
+        }
+      }
+    },
+    "/news/{id}" : {
+      "get" : {
+        "tags" : [ "news" ],
+        "summary" : "Retorna a noticia pelo id",
+        "description" : "Retorna um unica noticia pelo id",
+        "operationId" : "getNew",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "description" : "ID da noticia a ser retornada",
+          "required" : true,
+          "type" : "integer",
+          "format" : "int64"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "sucesso"
+          }
+        }
+      }
+    }
+  },
+  "definitions" : {
+    "News" : {
+      "type" : "object",
+      "required" : [ "id" ],
+      "properties" : {
+        "id" : {
+          "type" : "integer",
+          "format" : "int64",
+          "example" : 10
+        },
+        "title" : {
+          "type" : "string",
+          "example" : "Superávit da balança comercial recua 13% em 2018, para US$ 58,3 bilhões"
+        },
+        "link" : {
+          "type" : "string",
+          "example" : "https://g1.globo.com/economia/noticia/2019/01/02/superavit-da-balanca-comercial-recua-13-em-2018-para-us-582-bilhoes.ghtml"
+        },
+        "guid" : {
+          "type" : "string",
+          "example" : "https://g1.globo.com/economia/noticia/2019/01/02/superavit-da-balanca-comercial-recua-13-em-2018-para-us-582-bilhoes.ghtml"
+        },
+        "description" : {
+          "type" : "string",
+          "example" : "Apesar da queda, esse foi o segundo maior superávit comercial da história, perdendo apenas para o ano de 2017. Números foram divulgados pela área econômica do governo. A balança comercial brasileira registrou superávit (exportações maiores que importações) de US$ 58,298 bilhões em todo ano de 2018, informou nesta quarta-feira (2) o Ministério da Economia"
+        },
+        "category" : {
+          "type" : "string",
+          "example" : "G1"
+        },
+        "pubDate" : {
+          "type" : "string",
+          "example" : "2018-12-31 09:18:38"
+        }
+      }
+    }
+  },
+  "externalDocs" : {
+    "description" : "O projeto está disponível no Github",
+    "url" : "https://github.com/cyberby/noticias"
+  }
+}
